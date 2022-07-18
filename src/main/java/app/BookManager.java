@@ -31,13 +31,8 @@ public class BookManager {
     }
 
     protected void read() {
-        Book book = new Book();
-        book.setTitle("Effective Java");
-        book.setAuthor("Joshua Bloch");
-        book.setPrice(32.59f);
-
-        try(Session session = sessionFactory.openSession()) {
-            final var dbBook = session.get(Book.class, book);
+        try (Session session = sessionFactory.openSession()) {
+            final var dbBook = session.get(Book.class, 1L);
             System.out.println(dbBook);
         }
         // code to get a book
@@ -55,6 +50,7 @@ public class BookManager {
         BookManager manager = new BookManager();
         manager.setup();
         manager.create();
+        manager.read();
         manager.exit();
     }
 }

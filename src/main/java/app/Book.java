@@ -1,5 +1,7 @@
 package app;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.*;
 
 @Entity
@@ -46,5 +48,14 @@ public class Book {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    public String toString() {
+        try {
+            return new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            System.out.println(e);
+            return "";
+        }
     }
 }
