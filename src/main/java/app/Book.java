@@ -1,3 +1,5 @@
+package app;
+
 import jakarta.persistence.*;
 
 @Entity

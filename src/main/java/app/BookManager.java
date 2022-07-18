@@ -1,7 +1,10 @@
+package app;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 public class BookManager {
+
     protected SessionFactory sessionFactory;
 
     protected void setup() {
@@ -28,6 +31,15 @@ public class BookManager {
     }
 
     protected void read() {
+        Book book = new Book();
+        book.setTitle("Effective Java");
+        book.setAuthor("Joshua Bloch");
+        book.setPrice(32.59f);
+
+        try(Session session = sessionFactory.openSession()) {
+            final var dbBook = session.get(Book.class, book);
+            System.out.println(dbBook);
+        }
         // code to get a book
     }
 
