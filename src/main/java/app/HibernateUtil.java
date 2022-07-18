@@ -13,7 +13,6 @@ public class HibernateUtil {
             try {
                 Configuration configuration = new Configuration();
                 configuration.addAnnotatedClass(Book.class);
-
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
 
